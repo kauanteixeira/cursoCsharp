@@ -1,0 +1,27 @@
+# Ignorar todas as pastas bin e obj em qualquer subdiretório
+**/bin/
+**/obj/
+
+# Ignorar arquivos de solução e projeto do Visual Studio
+*.sln
+*.csproj
+*.user
+*.suo
+*.cache
+*.vsp
+*.ncb
+*.log
+
+# Ignorar arquivos de build ou IDE
+*.exe
+*.dll
+*.pdb
+*.vcxproj
+*.db
+.DS_Store
+
+# Ignorar pastas ocultas e temporárias
+.vscode/
+.idea/
+.vs/
+Thumbs.db
