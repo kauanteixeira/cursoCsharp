@@ -4,30 +4,27 @@ using ClassExercices05;
 
 namespace MyCode
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Aluno aluno = new Aluno();
-            Console.Write("Nome do aluno: ");
+
+            Console.Write("Digite o nome do aluno: ");
+
             aluno.Nome = Console.ReadLine();
-            Console.WriteLine("Digite as três notas do aluno:");
-            aluno.Nota1 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            aluno.Nota2 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            aluno.Nota3 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.WriteLine("NOTA FINAL = "
-            + aluno.NotaFinal().ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Digite as três notas do aluno: ");
+
+            aluno.N1 = double.Parse(Console.ReadLine());
+            aluno.N2 = double.Parse(Console.ReadLine());
+            aluno.N3 = double.Parse(Console.ReadLine());
+
+            Console.WriteLine($"NOTA FINAL = {aluno.NotaFinal().ToString("F2", CultureInfo.InvariantCulture)}");
+
             if (aluno.Aprovado())
-            {
                 Console.WriteLine("APROVADO");
-            }
             else
-            {
-                Console.WriteLine("REPROVADO");
-                Console.WriteLine("FALTARAM "
-                + aluno.NotaRestante().ToString("F2", CultureInfo.InvariantCulture)
-                + " PONTOS");
-            }
+                Console.WriteLine($"REPROVADO \nFALTARAM {aluno.NotaRestante().ToString("F2", CultureInfo.InvariantCulture)} PONTOS");
         }
     }
 }
