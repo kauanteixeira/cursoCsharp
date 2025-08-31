@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Sobrecarga
+namespace SintaxeAlternativa
 {
     class Produto
     {
@@ -8,24 +8,12 @@ namespace Sobrecarga
         public double Preco;
         public int Quantidade;
 
-        /* 
-            A Sobrecarga é um recurso que uma classe possui de oferecer mais de uma
-            operação com o mesmo nome, porém com diferentes listas de
-            parâmetros.
-        */
-
-        public Produto(string nome, double preco, int quantidade)
+        public Produto  (string nome, double preco, int quantidade)
         {
             Nome = nome;
             Preco = preco;
             Quantidade = quantidade;
         }
-        public Produto (string nome, double preco)
-        {
-            Nome = nome;
-            Preco = preco;
-        }
-
 
         public double ValorTotalEmEstoque()
         {
