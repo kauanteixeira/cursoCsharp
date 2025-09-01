@@ -40,7 +40,8 @@ namespace PalavraThis
                 Nome
                 + ", R$"
                 + Preco.ToString("F2", CultureInfo.InvariantCulture)
-                + ", " + Qtde
+                + ", " 
+                + Qtde
                 + " unidade"
                 + ", Total: R$"
                 + ValorTotalEmEstoque().ToString("F2", CultureInfo.InvariantCulture)
