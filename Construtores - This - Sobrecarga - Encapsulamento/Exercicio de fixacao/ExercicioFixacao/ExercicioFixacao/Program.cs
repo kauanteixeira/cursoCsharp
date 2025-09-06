@@ -1,47 +1,49 @@
 ﻿using System;
 using System.Globalization;
-using Conta;
 
-namespace MyCode
+namespace ExercicioFixacao
 {
     class Program
     {
         static void Main(string[] args)
         {
-            ContaBancaria cliente = new ContaBancaria();
+            ContaBancaria cliente;
 
             Console.Write("Entre o número da conta: ");
-            int numero = int.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            cliente.NumConta(numero);
+            if (!int.TryParse(Console.ReadLine(), out int numero))
+            {
+                Console.WriteLine("Número inválido! Encerrando o programa...");
+                return;
+            }
 
             Console.Write("Entre o titular da conta: ");
-            cliente.Titular = Console.ReadLine();
+            string titular = Console.ReadLine();
 
             Console.Write("Haverá depósito inicial (s/n)? ");
-            string operacao = Console.ReadLine();
+            string confirmacaoDepositoInicial = Console.ReadLine().ToLower();
 
-            if (operacao.ToLower() == "s")
+            if (confirmacaoDepositoInicial == "s")
             {
                 Console.Write("Entre o valor de depósito inicial: ");
-                double depositoInicial = double.Parse(Console.ReadLine());
-                cliente.Deposito(depositoInicial);
-                Console.WriteLine(cliente);
+                double depositoInicial = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                cliente = new ContaBancaria(numero, titular, depositoInicial);
             }
             else
             {
-                Console.WriteLine(cliente);
+                cliente = new ContaBancaria(numero, titular);
             }
 
-            Console.WriteLine("Entre um valor para depósito: ");
-            double quantiaDeposito = double.Parse(Console.ReadLine());
-            cliente.Deposito(quantiaDeposito);
-
-            Console.WriteLine("Dados da conta atualizados: ");
+            Console.WriteLine("\nDados da conta:");
             Console.WriteLine(cliente);
 
-            Console.WriteLine("Entre um valor para saque: ");
-            double quantiaSaque = double.Parse(Console.ReadLine());
-            cliente.Saque(quantiaSaque);
+            Console.Write("\nEntre um valor para depósito: ");
+            cliente.Deposito(double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture));
+
+            Console.WriteLine("\nConta atualizada: ");
+            Console.WriteLine(cliente);
+
+            Console.Write("\nEntre um valor para saque: ");
+            cliente.Saque(double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture));
 
             Console.WriteLine("Dados da conta atualizados: ");
             Console.WriteLine(cliente);

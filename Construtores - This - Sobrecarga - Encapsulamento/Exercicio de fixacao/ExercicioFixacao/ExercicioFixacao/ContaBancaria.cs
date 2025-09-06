@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Conta
+namespace ExercicioFixacao
 {
     public class ContaBancaria
     {
-        private int _numero;
-        public string Titular;
+        public int Numero { get; private set; }
+        public string Titular { get; set; }
         public double Saldo { get; private set; }
 
-        public int NumConta(int numero)
+        public ContaBancaria(int numero, string titular, double depositoInicial = 0)
         {
-            return this._numero = numero;
+            Numero = numero;
+            Titular = titular;
+            Saldo = depositoInicial;
         }
 
         public void Deposito(double quantia)
@@ -21,6 +23,11 @@ namespace Conta
 
         public void Saque(double quantia)
         {
+            if (quantia + 5.0 > Saldo)
+            {
+                Console.WriteLine("Saldo insuficiente para realizar o saque!");
+                return;
+            }
             Saldo -= quantia + 5.0;
         }
 
@@ -28,7 +35,7 @@ namespace Conta
         {
             return 
                 "Conta: " 
-                + _numero
+                + Numero
                 + ", Titular: "
                 + Titular
                 + ", Saldo: $"
